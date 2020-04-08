@@ -1,0 +1,31 @@
+
+1) Refarence link :  https://codingdriver.com/delete-confirmation-alert-dialog-using-sweetalert-in-laravel.html
+
+2) js link  : <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+3 ) script code :
+            <script>
+                $('.delete').on('click', function (event) {
+                    event.preventDefault();
+                    const url = $(this).attr('href');
+                    swal({
+                        title: 'Are you sure?',
+                        text: 'This record and it`s details will be permanantly deleted!',
+                        icon: 'warning',
+                        buttons: ["Cancel", "Yes!"],
+                    }).then(function(value) {
+                        if (value) {
+                            window.location.href = url;
+                        }
+                    });
+                });
+            </script>
+
+4) Blade File : <a href="/post/delete/{{$post->id}}" class="button delete-confirm">Delete</a>
+
+6) Add Method :
+               public function destroy($id)
+                {
+                    Post::find($id)->delete();
+                    return back()->with('success','Post deleted successfully');
+                }
