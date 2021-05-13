@@ -5,7 +5,7 @@
 
 3 ) script code :
             <script>
-                $('.delete').on('click', function (event) {
+                $('.delete-confirm').on('click', function (event) {
                     event.preventDefault();
                     const url = $(this).attr('href');
                     swal({
